@@ -1,0 +1,1153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aura Detailerz – Premium Car Detailing Kerala</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cormorant+Garamond:ital,wght@0,300;0,600;1,300;1,600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --gold: #C9A84C;
+  --gold-light: #E8C96A;
+  --gold-dim: rgba(201,168,76,0.15);
+  --dark: #080808;
+  --charcoal: #111111;
+  --mid: #1C1C1C;
+  --white: #F2EFE8;
+  --grey: #777;
+  --light-grey: #AAAAAA;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--dark);
+  color: var(--white);
+  font-family: 'DM Sans', sans-serif;
+  overflow-x: hidden;
+  cursor: none;
+}
+
+/* Custom cursor */
+.cursor {
+  position: fixed;
+  width: 10px; height: 10px;
+  background: var(--gold);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  transition: transform 0.15s ease;
+  transform: translate(-50%, -50%);
+}
+.cursor-ring {
+  position: fixed;
+  width: 36px; height: 36px;
+  border: 1px solid var(--gold);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9998;
+  transition: transform 0.35s ease, width 0.3s, height 0.3s, opacity 0.3s;
+  transform: translate(-50%, -50%);
+  opacity: 0.5;
+}
+
+/* Grain */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 9000;
+}
+
+/* ====== NAV ====== */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 24px 60px;
+  background: linear-gradient(to bottom, rgba(8,8,8,0.95), transparent);
+  transition: background 0.3s;
+}
+nav.scrolled {
+  background: rgba(8,8,8,0.97);
+  padding: 16px 60px;
+  border-bottom: 1px solid rgba(201,168,76,0.1);
+}
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+}
+.nav-logo-box {
+  width: 38px; height: 38px;
+  background: var(--gold);
+  display: grid;
+  place-items: center;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 17px;
+  color: var(--dark);
+  letter-spacing: 1px;
+}
+.nav-logo-text {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 20px;
+  letter-spacing: 4px;
+  color: var(--white);
+}
+.nav-logo-text span { color: var(--gold); }
+.nav-links {
+  display: flex;
+  gap: 40px;
+  list-style: none;
+}
+.nav-links a {
+  font-size: 11px;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--light-grey);
+  text-decoration: none;
+  transition: color 0.2s;
+  font-weight: 500;
+}
+.nav-links a:hover { color: var(--gold); }
+.nav-cta {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 13px;
+  letter-spacing: 3px;
+  color: var(--dark);
+  background: var(--gold);
+  padding: 10px 28px;
+  text-decoration: none;
+  clip-path: polygon(6px 0%, 100% 0%, calc(100% - 6px) 100%, 0% 100%);
+  transition: background 0.2s;
+}
+.nav-cta:hover { background: var(--gold-light); }
+
+/* ====== HERO ====== */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  padding: 0 60px;
+}
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, #080808 0%, #141414 50%, #0D0D0D 100%);
+}
+.hero-bg-car {
+  position: absolute;
+  right: -2%;
+  bottom: 0;
+  width: 62%;
+  height: 100%;
+  object-fit: cover;
+  object-position: left center;
+  opacity: 0.45;
+  filter: saturate(0.6) contrast(1.2);
+  mask-image: linear-gradient(to left, rgba(0,0,0,0.9) 40%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to left, rgba(0,0,0,0.9) 40%, transparent 100%);
+  animation: heroFloat 12s ease-in-out infinite;
+}
+@keyframes heroFloat {
+  0%,100% { transform: scale(1.02) translateY(0); }
+  50%      { transform: scale(1.0) translateY(-8px); }
+}
+.hero-glow {
+  position: absolute;
+  bottom: 10%;
+  right: 20%;
+  width: 400px; height: 400px;
+  background: radial-gradient(circle, rgba(201,168,76,0.08) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 580px;
+}
+.hero-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 10px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 24px;
+  opacity: 0;
+  animation: fadeUp 0.8s 0.3s forwards;
+}
+.hero-eyebrow::before {
+  content: '';
+  display: block;
+  width: 30px; height: 1px;
+  background: var(--gold);
+}
+.hero-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(72px, 9vw, 110px);
+  line-height: 0.88;
+  letter-spacing: 2px;
+  margin-bottom: 28px;
+  opacity: 0;
+  animation: fadeUp 0.8s 0.5s forwards;
+}
+.hero-title .italic {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-weight: 300;
+  color: var(--gold);
+  font-size: clamp(80px, 10vw, 120px);
+}
+.hero-sub {
+  font-size: 15px;
+  font-weight: 300;
+  color: var(--light-grey);
+  line-height: 1.8;
+  max-width: 400px;
+  margin-bottom: 48px;
+  opacity: 0;
+  animation: fadeUp 0.8s 0.7s forwards;
+}
+.hero-actions {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  opacity: 0;
+  animation: fadeUp 0.8s 0.9s forwards;
+}
+.btn-primary {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 15px;
+  letter-spacing: 3px;
+  color: var(--dark);
+  background: var(--gold);
+  padding: 16px 42px;
+  text-decoration: none;
+  clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
+  transition: background 0.2s, transform 0.2s;
+  display: inline-block;
+}
+.btn-primary:hover { background: var(--gold-light); transform: translateY(-3px); }
+.btn-ghost {
+  font-size: 12px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--light-grey);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: color 0.2s;
+}
+.btn-ghost:hover { color: var(--gold); }
+.btn-ghost::after {
+  content: '→';
+  font-size: 18px;
+  transition: transform 0.2s;
+}
+.btn-ghost:hover::after { transform: translateX(4px); }
+
+.hero-stats {
+  position: absolute;
+  bottom: 60px;
+  right: 60px;
+  display: flex;
+  gap: 48px;
+  opacity: 0;
+  animation: fadeUp 0.8s 1.1s forwards;
+  z-index: 2;
+}
+.stat-item { text-align: center; }
+.stat-num {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 42px;
+  color: var(--gold);
+  line-height: 1;
+}
+.stat-label {
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--grey);
+  margin-top: 4px;
+}
+.scroll-hint {
+  position: absolute;
+  bottom: 60px;
+  left: 60px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 10px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--grey);
+  z-index: 2;
+  opacity: 0;
+  animation: fadeUp 0.8s 1.3s forwards;
+}
+.scroll-line {
+  width: 40px; height: 1px;
+  background: var(--grey);
+  position: relative;
+  overflow: hidden;
+}
+.scroll-line::after {
+  content: '';
+  position: absolute;
+  top: 0; left: -100%;
+  width: 100%; height: 100%;
+  background: var(--gold);
+  animation: scrollAnim 2s 2s infinite;
+}
+@keyframes scrollAnim {
+  from { left: -100%; }
+  to   { left: 100%; }
+}
+
+/* ====== SECTION COMMON ====== */
+section { padding: 120px 60px; }
+.section-label {
+  font-size: 10px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--gold);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+.section-label::before {
+  content: '';
+  display: block;
+  width: 24px; height: 1px;
+  background: var(--gold);
+}
+.section-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(44px, 5vw, 64px);
+  line-height: 1;
+  letter-spacing: 2px;
+  margin-bottom: 16px;
+}
+.section-title .gold { color: var(--gold); }
+.section-title .italic {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-weight: 300;
+}
+
+/* ====== SERVICES ====== */
+.services-section {
+  background: var(--charcoal);
+  position: relative;
+  overflow: hidden;
+}
+.services-section::before {
+  content: 'DETAIL';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 22vw;
+  color: rgba(255,255,255,0.015);
+  white-space: nowrap;
+  pointer-events: none;
+  letter-spacing: 10px;
+}
+.services-intro {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: end;
+  margin-bottom: 80px;
+}
+.services-desc {
+  font-size: 15px;
+  font-weight: 300;
+  color: var(--light-grey);
+  line-height: 1.9;
+  align-self: end;
+}
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2px;
+}
+.service-card {
+  background: var(--mid);
+  padding: 48px 32px;
+  position: relative;
+  overflow: hidden;
+  transition: background 0.3s;
+  cursor: none;
+}
+.service-card::before {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0;
+  width: 0; height: 2px;
+  background: var(--gold);
+  transition: width 0.4s ease;
+}
+.service-card:hover { background: #222; }
+.service-card:hover::before { width: 100%; }
+.service-num {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 13px;
+  color: var(--gold);
+  letter-spacing: 2px;
+  margin-bottom: 32px;
+  opacity: 0.7;
+}
+.service-icon {
+  font-size: 32px;
+  margin-bottom: 20px;
+  display: block;
+}
+.service-name {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 22px;
+  letter-spacing: 2px;
+  margin-bottom: 12px;
+  color: var(--white);
+}
+.service-desc {
+  font-size: 12px;
+  font-weight: 300;
+  color: var(--grey);
+  line-height: 1.8;
+}
+
+/* ====== ABOUT ====== */
+.about-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 100px;
+  align-items: center;
+}
+.about-img-wrap {
+  position: relative;
+}
+.about-img {
+  width: 100%;
+  aspect-ratio: 4/5;
+  object-fit: cover;
+  filter: saturate(0.8) contrast(1.1);
+  display: block;
+}
+.about-img-frame {
+  position: absolute;
+  top: -20px; left: -20px;
+  right: 20px; bottom: 20px;
+  border: 1px solid var(--gold);
+  opacity: 0.25;
+  pointer-events: none;
+}
+.about-badge {
+  position: absolute;
+  bottom: -20px;
+  right: -20px;
+  background: var(--gold);
+  color: var(--dark);
+  padding: 28px;
+  text-align: center;
+}
+.about-badge-num {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 44px;
+  line-height: 1;
+}
+.about-badge-text {
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+.about-content { }
+.about-text {
+  font-size: 15px;
+  font-weight: 300;
+  color: var(--light-grey);
+  line-height: 1.9;
+  margin-bottom: 20px;
+}
+.about-features {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-top: 40px;
+}
+.feature-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 12px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  font-weight: 500;
+  color: var(--light-grey);
+}
+.feature-dot {
+  width: 6px; height: 6px;
+  background: var(--gold);
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* ====== PROCESS ====== */
+.process-section {
+  background: var(--charcoal);
+  text-align: center;
+}
+.process-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  margin-top: 80px;
+  position: relative;
+}
+.process-grid::before {
+  content: '';
+  position: absolute;
+  top: 36px;
+  left: 12.5%;
+  width: 75%;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--gold-dim), var(--gold), var(--gold-dim), transparent);
+}
+.process-step {
+  padding: 0 32px;
+  text-align: center;
+}
+.step-num {
+  width: 72px; height: 72px;
+  border: 1px solid var(--gold);
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 26px;
+  color: var(--gold);
+  margin: 0 auto 32px;
+  background: var(--charcoal);
+  position: relative;
+  z-index: 1;
+}
+.step-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 20px;
+  letter-spacing: 2px;
+  margin-bottom: 12px;
+}
+.step-desc {
+  font-size: 12px;
+  font-weight: 300;
+  color: var(--grey);
+  line-height: 1.8;
+}
+
+/* ====== GALLERY ====== */
+.gallery-section { padding: 120px 0; }
+.gallery-header {
+  padding: 0 60px;
+  margin-bottom: 60px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+.gallery-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  grid-template-rows: 300px 300px;
+  gap: 3px;
+}
+.gallery-item {
+  overflow: hidden;
+  position: relative;
+  background: var(--mid);
+}
+.gallery-item:first-child {
+  grid-row: span 2;
+}
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: saturate(0.7);
+  transition: transform 0.6s ease, filter 0.4s;
+}
+.gallery-item:hover img {
+  transform: scale(1.06);
+  filter: saturate(1);
+}
+.gallery-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(8,8,8,0.7) 0%, transparent 60%);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.gallery-item:hover .gallery-overlay { opacity: 1; }
+.gallery-placeholder {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #1a1a1a, #222);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 13px;
+  letter-spacing: 3px;
+  color: var(--grey);
+}
+
+/* ====== TESTIMONIALS ====== */
+.testimonials-section {
+  background: var(--dark);
+  overflow: hidden;
+}
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+  margin-top: 80px;
+}
+.testimonial-card {
+  background: var(--charcoal);
+  padding: 48px 40px;
+  position: relative;
+}
+.testimonial-card::before {
+  content: '"';
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 120px;
+  color: var(--gold);
+  opacity: 0.15;
+  position: absolute;
+  top: 10px; left: 28px;
+  line-height: 1;
+}
+.testimonial-stars {
+  color: var(--gold);
+  font-size: 13px;
+  letter-spacing: 3px;
+  margin-bottom: 20px;
+}
+.testimonial-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 18px;
+  font-weight: 300;
+  line-height: 1.7;
+  color: var(--white);
+  margin-bottom: 32px;
+}
+.testimonial-author {
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--grey);
+}
+.testimonial-author strong {
+  display: block;
+  color: var(--gold);
+  font-size: 13px;
+  letter-spacing: 1px;
+  margin-bottom: 4px;
+  font-weight: 500;
+}
+
+/* ====== CTA BANNER ====== */
+.cta-section {
+  background: var(--gold);
+  padding: 100px 60px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.cta-section::before {
+  content: 'AURA';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 20vw;
+  color: rgba(0,0,0,0.06);
+  white-space: nowrap;
+  pointer-events: none;
+  letter-spacing: 20px;
+}
+.cta-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(44px, 6vw, 80px);
+  color: var(--dark);
+  line-height: 1;
+  letter-spacing: 2px;
+  margin-bottom: 20px;
+}
+.cta-sub {
+  font-size: 14px;
+  color: rgba(0,0,0,0.6);
+  font-weight: 300;
+  margin-bottom: 48px;
+  letter-spacing: 1px;
+}
+.btn-dark {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 16px;
+  letter-spacing: 3px;
+  color: var(--gold);
+  background: var(--dark);
+  padding: 18px 52px;
+  text-decoration: none;
+  display: inline-block;
+  clip-path: polygon(10px 0%, 100% 0%, calc(100% - 10px) 100%, 0% 100%);
+  transition: background 0.2s, transform 0.2s;
+}
+.btn-dark:hover { background: #111; transform: translateY(-3px); }
+
+/* ====== FOOTER ====== */
+footer {
+  background: #050505;
+  padding: 80px 60px 40px;
+  border-top: 1px solid rgba(201,168,76,0.1);
+}
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 60px;
+  margin-bottom: 60px;
+}
+.footer-brand-desc {
+  font-size: 13px;
+  font-weight: 300;
+  color: var(--grey);
+  line-height: 1.8;
+  margin-top: 16px;
+  max-width: 260px;
+}
+.footer-heading {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 14px;
+  letter-spacing: 3px;
+  color: var(--gold);
+  margin-bottom: 24px;
+}
+.footer-links {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.footer-links a {
+  font-size: 12px;
+  font-weight: 300;
+  color: var(--grey);
+  text-decoration: none;
+  letter-spacing: 0.5px;
+  transition: color 0.2s;
+}
+.footer-links a:hover { color: var(--gold); }
+.footer-contact-item {
+  font-size: 12px;
+  font-weight: 300;
+  color: var(--grey);
+  line-height: 1.7;
+  margin-bottom: 12px;
+}
+.footer-contact-item strong {
+  display: block;
+  color: var(--light-grey);
+  font-weight: 500;
+  font-size: 11px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: 3px;
+}
+.footer-bottom {
+  border-top: 1px solid #1a1a1a;
+  padding-top: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 11px;
+  color: #444;
+  letter-spacing: 1px;
+}
+.footer-bottom span { color: var(--gold); }
+
+/* Animations */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Scroll reveal */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Mobile nav hamburger */
+.hamburger { display: none; }
+
+@media (max-width: 768px) {
+  nav { padding: 20px 24px; }
+  nav.scrolled { padding: 14px 24px; }
+  .nav-links, .nav-cta { display: none; }
+  .hamburger { display: block; font-size: 22px; color: var(--white); background: none; border: none; cursor: pointer; }
+  section { padding: 80px 24px; }
+  .hero { padding: 0 24px; min-height: 100svh; }
+  .hero-title { font-size: 64px; }
+  .hero-bg-car { width: 100%; opacity: 0.2; right: 0; }
+  .hero-stats { bottom: 30px; right: 24px; gap: 24px; }
+  .stat-num { font-size: 28px; }
+  .scroll-hint { display: none; }
+  .services-intro { grid-template-columns: 1fr; gap: 20px; }
+  .services-grid { grid-template-columns: 1fr 1fr; }
+  .about-section { grid-template-columns: 1fr; gap: 50px; padding: 80px 24px; }
+  .process-grid { grid-template-columns: 1fr 1fr; }
+  .process-grid::before { display: none; }
+  .gallery-grid { grid-template-columns: 1fr; grid-template-rows: auto; }
+  .gallery-item:first-child { grid-row: span 1; height: 300px; }
+  .gallery-item { height: 200px; }
+  .gallery-section { padding: 80px 0; }
+  .gallery-header { padding: 0 24px; flex-direction: column; align-items: flex-start; gap: 16px; }
+  .testimonials-grid { grid-template-columns: 1fr; }
+  .footer-grid { grid-template-columns: 1fr 1fr; gap: 40px; }
+  .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
+  .cta-section { padding: 80px 24px; }
+}
+</style>
+</head>
+<body>
+
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- NAV -->
+<nav id="navbar">
+  <a href="#" class="nav-logo">
+    <div class="nav-logo-box">AD</div>
+    <div class="nav-logo-text">AURA <span>DETAILERZ</span></div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#process">Process</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">BOOK NOW</a>
+  <button class="hamburger">☰</button>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-bg"></div>
+  <img class="hero-bg-car" src="/mnt/user-data/uploads/1000244227.png" alt="Premium Car Detailing">
+  <div class="hero-glow"></div>
+
+  <div class="hero-content">
+    <div class="hero-eyebrow">Kerala's Premium Detailing Studio</div>
+    <h1 class="hero-title">
+      YOUR CAR.<br>
+      <span class="italic">Perfected.</span>
+    </h1>
+    <p class="hero-sub">നിങ്ങളുടെ കാറിന് ഒരു പുതിയ ജീവൻ കൊടുക്കൂ. From ceramic coating to paint correction — we restore, protect, and transform.</p>
+    <div class="hero-actions">
+      <a href="#contact" class="btn-primary">BOOK A SESSION</a>
+      <a href="#services" class="btn-ghost">Our Services</a>
+    </div>
+  </div>
+
+  <div class="hero-stats">
+    <div class="stat-item">
+      <div class="stat-num">500+</div>
+      <div class="stat-label">Cars Detailed</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">5★</div>
+      <div class="stat-label">Rating</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">3+</div>
+      <div class="stat-label">Years Exp.</div>
+    </div>
+  </div>
+
+  <div class="scroll-hint">
+    <div class="scroll-line"></div>
+    Scroll to explore
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services-section" id="services">
+  <div class="services-intro">
+    <div>
+      <div class="section-label reveal">What We Offer</div>
+      <h2 class="section-title reveal">PREMIUM <span class="gold">SERVICES</span></h2>
+    </div>
+    <p class="services-desc reveal">Every service we offer is crafted with precision, using only the finest products and techniques. Your vehicle deserves nothing less than perfection.</p>
+  </div>
+
+  <div class="services-grid">
+    <div class="service-card reveal">
+      <div class="service-num">01</div>
+      <span class="service-icon">🛡️</span>
+      <div class="service-name">Ceramic Coating</div>
+      <p class="service-desc">Long-lasting nano-ceramic protection that repels water, dirt, and UV damage for years.</p>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-num">02</div>
+      <span class="service-icon">🎨</span>
+      <div class="service-name">Paint Correction</div>
+      <p class="service-desc">Multi-stage machine polishing to eliminate swirl marks, scratches, and oxidation.</p>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-num">03</div>
+      <span class="service-icon">🪟</span>
+      <div class="service-name">PPF Installation</div>
+      <p class="service-desc">Paint Protection Film that guards your car's finish against stone chips and road debris.</p>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-num">04</div>
+      <span class="service-icon">✨</span>
+      <div class="service-name">Interior Detailing</div>
+      <p class="service-desc">Deep cleaning, conditioning, and restoration of every interior surface to showroom standard.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about-section" id="about">
+  <div class="about-img-wrap reveal">
+    <img class="about-img" src="/mnt/user-data/uploads/1000244227.png" alt="Aura Detailerz Studio">
+    <div class="about-img-frame"></div>
+    <div class="about-badge">
+      <div class="about-badge-num">5★</div>
+      <div class="about-badge-text">Rated Studio</div>
+    </div>
+  </div>
+  <div class="about-content">
+    <div class="section-label reveal">Our Story</div>
+    <h2 class="section-title reveal">WHERE PASSION MEETS <span class="italic gold">Precision</span></h2>
+    <p class="about-text reveal">Aura Detailerz is Kerala's destination for premium automotive detailing. Located in Bay 1, our studio is equipped with professional-grade tools and staffed by passionate detailers who treat every car as a work of art.</p>
+    <p class="about-text reveal">We believe your car is an extension of you. That's why we use only the finest ceramic coatings, paint protection films, and detailing products — because you deserve nothing less.</p>
+    <div class="about-features reveal">
+      <div class="feature-item"><div class="feature-dot"></div> Certified Detailers</div>
+      <div class="feature-item"><div class="feature-dot"></div> Premium Products</div>
+      <div class="feature-item"><div class="feature-dot"></div> Dust-Free Bay</div>
+      <div class="feature-item"><div class="feature-dot"></div> Warranty Included</div>
+      <div class="feature-item"><div class="feature-dot"></div> All Car Brands</div>
+      <div class="feature-item"><div class="feature-dot"></div> 100% Satisfaction</div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="process-section" id="process">
+  <div class="section-label reveal" style="justify-content:center">How It Works</div>
+  <h2 class="section-title reveal" style="text-align:center">THE AURA <span class="gold">PROCESS</span></h2>
+  <div class="process-grid">
+    <div class="process-step reveal">
+      <div class="step-num">01</div>
+      <div class="step-title">Inspection</div>
+      <p class="step-desc">We thoroughly inspect your vehicle to assess paint condition, contaminants, and specific needs.</p>
+    </div>
+    <div class="process-step reveal">
+      <div class="step-num">02</div>
+      <div class="step-title">Preparation</div>
+      <p class="step-desc">Deep wash, clay bar decontamination, and surface preparation for optimal bonding.</p>
+    </div>
+    <div class="process-step reveal">
+      <div class="step-num">03</div>
+      <div class="step-title">Treatment</div>
+      <p class="step-desc">Professional application of your chosen service using certified premium-grade products.</p>
+    </div>
+    <div class="process-step reveal">
+      <div class="step-num">04</div>
+      <div class="step-title">Delivery</div>
+      <p class="step-desc">Final quality check and walkthrough before your car is returned, gleaming and protected.</p>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="gallery-section" id="gallery">
+  <div class="gallery-header">
+    <div>
+      <div class="section-label reveal">Our Work</div>
+      <h2 class="section-title reveal">THE <span class="gold">GALLERY</span></h2>
+    </div>
+    <a href="#contact" class="btn-ghost reveal" style="color: var(--light-grey)">View All Work</a>
+  </div>
+  <div class="gallery-grid">
+    <div class="gallery-item">
+      <img src="/mnt/user-data/uploads/1000244227.png" alt="Detailing work">
+      <div class="gallery-overlay"></div>
+    </div>
+    <div class="gallery-item">
+      <div class="gallery-placeholder">CERAMIC COAT</div>
+    </div>
+    <div class="gallery-item">
+      <div class="gallery-placeholder">PAINT CORRECT</div>
+    </div>
+    <div class="gallery-item">
+      <div class="gallery-placeholder">INTERIOR</div>
+    </div>
+    <div class="gallery-item">
+      <div class="gallery-placeholder">PPF WRAP</div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials-section" id="testimonials">
+  <div class="section-label reveal" style="justify-content:center">What Clients Say</div>
+  <h2 class="section-title reveal" style="text-align:center">CLIENT <span class="gold italic">Stories</span></h2>
+  <div class="testimonials-grid">
+    <div class="testimonial-card reveal">
+      <div class="testimonial-stars">★★★★★</div>
+      <p class="testimonial-text">"The ceramic coating on my car is absolutely flawless. The team at Aura Detailerz are true professionals — the attention to detail is unmatched."</p>
+      <div class="testimonial-author"><strong>Rahul Menon</strong>Kochi, Kerala</div>
+    </div>
+    <div class="testimonial-card reveal">
+      <div class="testimonial-stars">★★★★★</div>
+      <p class="testimonial-text">"My Kia EV6 looks better now than the day I bought it. The paint correction removed every swirl mark. Absolutely worth every rupee."</p>
+      <div class="testimonial-author"><strong>Arjun Krishnan</strong>Thrissur, Kerala</div>
+    </div>
+    <div class="testimonial-card reveal">
+      <div class="testimonial-stars">★★★★★</div>
+      <p class="testimonial-text">"Brought my SUV in for interior detailing and was blown away. The studio is clean, the staff is friendly, and results are showroom-perfect."</p>
+      <div class="testimonial-author"><strong>Priya Nair</strong>Kozhikode, Kerala</div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section" id="contact">
+  <h2 class="cta-title reveal">READY TO TRANSFORM<br>YOUR CAR?</h2>
+  <p class="cta-sub reveal">ഇന്നുതന്നെ ബുക്ക് ചെയ്യൂ — സീറ്റുകൾ പരിമിതമാണ്</p>
+  <a href="tel:+91XXXXXXXXXX" class="btn-dark reveal">BOOK YOUR APPOINTMENT</a>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <div class="nav-logo" style="display:flex; align-items:center; gap:12px; margin-bottom:0;">
+        <div class="nav-logo-box">AD</div>
+        <div class="nav-logo-text">AURA <span style="color:var(--gold)">DETAILERZ</span></div>
+      </div>
+      <p class="footer-brand-desc">Kerala's premier destination for professional automotive detailing. Where every car leaves as a masterpiece.</p>
+    </div>
+    <div>
+      <div class="footer-heading">Services</div>
+      <ul class="footer-links">
+        <li><a href="#">Ceramic Coating</a></li>
+        <li><a href="#">Paint Correction</a></li>
+        <li><a href="#">PPF Installation</a></li>
+        <li><a href="#">Interior Detailing</a></li>
+        <li><a href="#">Full Detail Package</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-heading">Company</div>
+      <ul class="footer-links">
+        <li><a href="#">About Us</a></li>
+        <li><a href="#">Gallery</a></li>
+        <li><a href="#">Testimonials</a></li>
+        <li><a href="#">Book Now</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-heading">Contact</div>
+      <div class="footer-contact-item">
+        <strong>Location</strong>
+        Aura Detailerz, Bay 1<br>Kerala, India
+      </div>
+      <div class="footer-contact-item">
+        <strong>Phone</strong>
+        +91 XXXXX XXXXX
+      </div>
+      <div class="footer-contact-item">
+        <strong>Instagram</strong>
+        @auradetailerz
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div>© 2025 <span>Aura Detailerz</span>. All rights reserved.</div>
+    <div>Crafted with ♥ in Kerala</div>
+  </div>
+</footer>
+
+<script>
+// Custom cursor
+const cursor = document.getElementById('cursor');
+const ring = document.getElementById('cursorRing');
+let mx = 0, my = 0, rx = 0, ry = 0;
+document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
+function animCursor() {
+  cursor.style.left = mx + 'px'; cursor.style.top = my + 'px';
+  rx += (mx - rx) * 0.12; ry += (my - ry) * 0.12;
+  ring.style.left = rx + 'px'; ring.style.top = ry + 'px';
+  requestAnimationFrame(animCursor);
+}
+animCursor();
+document.querySelectorAll('a, button').forEach(el => {
+  el.addEventListener('mouseenter', () => { ring.style.width = '56px'; ring.style.height = '56px'; ring.style.opacity = '0.9'; });
+  el.addEventListener('mouseleave', () => { ring.style.width = '36px'; ring.style.height = '36px'; ring.style.opacity = '0.5'; });
+});
+
+// Navbar scroll
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll', () => {
+  navbar.classList.toggle('scrolled', window.scrollY > 60);
+});
+
+// Scroll reveal
+const reveals = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver(entries => {
+  entries.forEach((entry, i) => {
+    if (entry.isIntersecting) {
+      setTimeout(() => entry.target.classList.add('visible'), 80);
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.12 });
+reveals.forEach(el => observer.observe(el));
+
+// Smooth scroll nav
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const target = document.querySelector(a.getAttribute('href'));
+    if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth' }); }
+  });
+});
+</script>
+</body>
+</html>
