@@ -13,8 +13,15 @@
   drawer.addEventListener('click', function(e){ if (e.target === drawer || e.target.closest('a')) drawer.close(); });
 
   // Hero video: respect reduced motion / data saver
-  var hv = $('#heroVideo'), conn = navigator.connection;
-  if (matchMedia('(prefers-reduced-motion: reduce)').matches || (conn && conn.saveData)) { hv.removeAttribute('autoplay'); hv.pause(); }
+  // Shows: blurred preview (CSS) -> sharp poster -> video. If autoplay is blocked
+  // (data saver, low-power mode, reduced motion) the poster stays and a tap plays it.
+  var hv = $('#heroVideo'), hm = hv.parentNode, conn = navigator.connection;
+  var lite = matchMedia('(prefers-reduced-motion: reduce)').matches || (conn && conn.saveData);
+  var setPaused = function(){ hm.classList.toggle('paused', hv.paused); };
+  hv.addEventListener('play', setPaused); hv.addEventListener('pause', setPaused);
+  hv.addEventListener('click', function(){ if (hv.paused) { var p = hv.play(); if (p && p.catch) p.catch(function(){}); } else { hv.pause(); } });
+  if (lite) { hv.removeAttribute('autoplay'); hv.preload = 'none'; hv.pause(); setPaused(); }
+  else { var pr = hv.play(); if (pr && pr.catch) pr.catch(setPaused); }
 
   // Service links preselect the form
   var form = $('#bookForm');
