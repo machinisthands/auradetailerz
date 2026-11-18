@@ -1,0 +1,14 @@
+{
+  "name": "Aura Detailerz",
+  "short_name": "Aura",
+  "description": "Car & bike detailing studio at Korani, Thiruvananthapuram.",
+  "icons": [
+    { "src": "icon.png", "type": "image/png", "sizes": "192x192" },
+    { "src": "icon-512.png", "type": "image/png", "sizes": "512x512" }
+  ],
+  "start_url": "./",
+  "scope": "./",
+  "display": "browser",
+  "background_color": "#0B0B0C",
+  "theme_color": "#0B0B0C"
+}

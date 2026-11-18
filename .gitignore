@@ -1,0 +1,11 @@
+# OS / editor files
+.DS_Store
+Thumbs.db
+*.swp
+.vscode/
+.idea/
+
+# Tooling (not needed for GitHub Pages)
+node_modules
+dist
+.cache
