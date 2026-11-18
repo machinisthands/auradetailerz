@@ -15,7 +15,7 @@ Live: https://machinisthands.github.io/auradetailerz/
 ├── img/                # Photos (WebP + 400px variants) and logo
 ├── video/              # Hero montage and reels (H.264 MP4)
 ├── fonts/              # Self-hosted fonts (SIL OFL, see fonts/LICENSE.txt)
-├── favicon.ico, icon.svg, icon.png, icon-512.png
+├── favicon.ico, icon.png, icon-512.png, apple-touch-icon.png
 ├── site.webmanifest
 ├── robots.txt, sitemap.xml
 └── .editorconfig, .gitattributes, .gitignore
