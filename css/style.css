@@ -202,7 +202,11 @@ a.g:hover img{transform:scale(1.05)}
 .site-footer a{text-decoration:none}
 .site-footer a:hover{color:var(--text)}
 .site-footer .brand{color:var(--text);margin-bottom:16px}
-.site-footer>p:last-child{grid-column:1/-1;border-top:1px solid var(--line);padding-top:24px;font-size:13px}
+.site-footer>p:last-child{grid-column:1/-1;border-top:1px solid var(--line);padding-top:24px;font-size:13px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:6px}
+.site-footer .legal{font-weight:700;color:var(--text)}
+.brand-name{color:var(--gold)}
+.credit a{color:#D98E62;text-decoration:none}
+.credit a:hover{color:#F0A97E}
 
 /* Mobile action bar + lightbox */
 .action-bar{display:none}
@@ -238,6 +242,33 @@ a.g:hover img{transform:scale(1.05)}
 }
 @media (max-width:600px){
   :root{--pad:18px}
+  /* tighter vertical rhythm on phones */
+  main>section{padding-block:44px}
+  .hero{padding-top:96px!important;padding-bottom:36px!important;gap:24px}
+  .section-head{margin-bottom:24px}
+  h2{margin:10px 0 8px}
+  .lead{font-size:16px}
+  .hero-ml{margin-bottom:22px}
+  .actions{margin-bottom:22px;gap:10px}
+  .svc-grid,.steps{gap:12px}
+  .svc{padding:22px}
+  .svc .ico{margin-bottom:14px}
+  .svc>p{margin-bottom:14px}
+  .svc ul{margin-bottom:16px}
+  .why{gap:24px}
+  .feats{margin-top:20px;gap:12px}
+  .feats li,.steps li{padding:18px}
+  .steps li::before{margin-bottom:10px;font-size:36px}
+  .ig-strip{margin-top:24px;padding:20px}
+  .book{gap:24px}
+  .contacts{margin-top:18px;gap:10px}
+  .book form{gap:14px}
+  .faq details{margin-bottom:8px}
+  .faq summary{padding:16px 0}
+  .location{gap:14px}
+  .map{min-height:240px}
+  .cta{margin-bottom:44px}
+  .site-footer{padding-top:40px;gap:28px}
   .site-header .btn-gold{display:none}
   .brand{font-size:16px}.brand img{height:34px}
   .svc-grid,.steps,.feats,.book form{grid-template-columns:1fr}
