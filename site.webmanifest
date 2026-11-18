@@ -3,8 +3,8 @@
   "short_name": "Aura",
   "description": "Car & bike detailing studio at Korani, Thiruvananthapuram.",
   "icons": [
-    { "src": "icon.png", "type": "image/png", "sizes": "192x192" },
-    { "src": "icon-512.png", "type": "image/png", "sizes": "512x512" }
+    { "src": "icon.png?v=4", "type": "image/png", "sizes": "192x192" },
+    { "src": "icon-512.png?v=4", "type": "image/png", "sizes": "512x512" }
   ],
   "start_url": "./",
   "scope": "./",
